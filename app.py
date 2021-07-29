@@ -3,8 +3,8 @@ import dash; import dash_core_components as dcc; import dash_html_components as 
 from dash.dependencies import Input, Output
 
 # Setup the app. The server & app names should match those in Procfile 
-server = flask.Flask(__name__)
-app = dash.Dash(__name__, server=server)
+app = dash.Dash(__name__)
+server = app.server
 
 tips= px.data.tips()
 fig = px.scatter(tips, x="total_bill", y="tip")

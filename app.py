@@ -7,8 +7,8 @@ server = flask.Flask(__name__)
 app = dash.Dash(__name__, server=server)
 
 
-tips= px.data.tips()
-fig = px.scatter(tips, x="total_bill", y="tip")
+#tips= px.data.tips()
+#fig = px.scatter(tips, x="total_bill", y="tip")
 
 # app.layout = html.Div([
 #   dcc.RadioItems(id="gender1", options=[{'label': 'Female', 'value': 'Female'},{'label': 'Male', 'value': 'Male'}], value='Female'),

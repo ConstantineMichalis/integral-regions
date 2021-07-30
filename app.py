@@ -8,8 +8,8 @@ app = dash.Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=devi
 server = app.server
 
 # Define title and layout
-app.title = 'Tou mpempi mou'
-app.layout = html.H1("SAGAPAW RE MALAKA", className="header__text")
+app.title = 'Test'
+app.layout = html.H1("I EVGENIA INE POUTANA", className="header__text")
 
 if __name__ == "__main__":
     

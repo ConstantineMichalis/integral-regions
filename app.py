@@ -3,15 +3,19 @@ import dash; import dash_core_components as dcc; import dash_html_components as 
 from dash.dependencies import Input, Output
 
 # Setup the app. The server & app names should match those in Procfile 
-app = dash.Dash(__name__)
-server = app.server
+server = flask.Flask(__name__)
+app = dash.Dash(__name__, server=server)
+
 
 tips= px.data.tips()
 fig = px.scatter(tips, x="total_bill", y="tip")
 
-app.layout = html.Div([
-  dcc.RadioItems(id="gender1", options=[{'label': 'Female', 'value': 'Female'},{'label': 'Male', 'value': 'Male'}], value='Female'),
-  dcc.Graph(id="fig1", figure=fig)])
+# app.layout = html.Div([
+#   dcc.RadioItems(id="gender1", options=[{'label': 'Female', 'value': 'Female'},{'label': 'Male', 'value': 'Male'}], value='Female'),
+#   dcc.Graph(id="fig1", figure=fig)])
+
+app.layout = html.Div(
+  html.H1("SAGAPAW RE MALAKA!!"))
 
 @app.callback(Output('fig1', 'figure'),[Input('gender1', 'value')])
 def updateGender(g):
@@ -19,5 +23,4 @@ def updateGender(g):
 
 
 # Run the Dash app
-if __name__ == '__main__':
-    app.server.run(debug=True, use_reloader=False)
+app.run_server(debug=True, use_reloader=False)

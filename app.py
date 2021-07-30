@@ -9,7 +9,7 @@ server = app.server
 
 # Define title and layout
 app.title = 'Test'
-app.layout = html.H1("I EVGENIA INE POUTANA", className="header__text")
+app.layout = html.H1("SAGAPAW RE MALAKA", className="header__text")
 
 if __name__ == "__main__":
     

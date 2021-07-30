@@ -7,18 +7,7 @@ server = flask.Flask(__name__)
 app = dash.Dash(__name__, server=server)
 
 
-#tips= px.data.tips()
-#fig = px.scatter(tips, x="total_bill", y="tip")
-
-# app.layout = html.Div([
-#   dcc.RadioItems(id="gender1", options=[{'label': 'Female', 'value': 'Female'},{'label': 'Male', 'value': 'Male'}], value='Female'),
-#   dcc.Graph(id="fig1", figure=fig)])
-
-app.title = "SAGAPAW RE MALAKA!!"
-
-#@app.callback(Output('fig1', 'figure'),[Input('gender1', 'value')])
-#def updateGender(g):
-#    return  px.scatter(tips.query("sex=='"+g+"'"), x="total_bill", y="tip")
+app.layout = html.H1("SAGAPAW RE MALAKA", className="header__text")
 
 
 # Run the Dash app

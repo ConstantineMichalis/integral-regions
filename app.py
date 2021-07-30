@@ -17,9 +17,9 @@ fig = px.scatter(tips, x="total_bill", y="tip")
 app.layout = html.Div(
   html.H1("SAGAPAW RE MALAKA!!"))
 
-@app.callback(Output('fig1', 'figure'),[Input('gender1', 'value')])
-def updateGender(g):
-    return  px.scatter(tips.query("sex=='"+g+"'"), x="total_bill", y="tip")
+#@app.callback(Output('fig1', 'figure'),[Input('gender1', 'value')])
+#def updateGender(g):
+#    return  px.scatter(tips.query("sex=='"+g+"'"), x="total_bill", y="tip")
 
 
 # Run the Dash app

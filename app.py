@@ -14,8 +14,7 @@ app = dash.Dash(__name__, server=server)
 #   dcc.RadioItems(id="gender1", options=[{'label': 'Female', 'value': 'Female'},{'label': 'Male', 'value': 'Male'}], value='Female'),
 #   dcc.Graph(id="fig1", figure=fig)])
 
-app.layout = html.Div(
-  html.H1("SAGAPAW RE MALAKA!!"))
+app.title = "SAGAPAW RE MALAKA!!"
 
 #@app.callback(Output('fig1', 'figure'),[Input('gender1', 'value')])
 #def updateGender(g):

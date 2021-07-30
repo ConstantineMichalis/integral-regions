@@ -1,14 +1,17 @@
-import flask; import plotly.express as px
-import dash; import dash_core_components as dcc; import dash_html_components as html
-from dash.dependencies import Input, Output
+import dash
+import dash_html_components as html
 
-# Setup the app. The server & app names should match those in Procfile 
-server = flask.Flask(__name__)
-app = dash.Dash(__name__, server=server)
+# Creating app
+app = dash.Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}])
 
+# Associating server
+server = app.server
 
-app.layout = html.H1("SAGAPAW RE MALAKA", className="header__text")
+# Define title and layout
+app.title = 'COVID 19 - World cases'
+app.layout = html.H1("COVID 19 🦠 - Day to day evolution all over the world", className="header__text")
 
-
-# Run the Dash app
-app.run_server(debug=True, use_reloader=False)
+if __name__ == "__main__":
+    
+    # Starting flask server
+    app.run_server(debug=True)

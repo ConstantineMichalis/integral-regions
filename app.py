@@ -11,8 +11,7 @@ app = dash.Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=devi
 server = app.server
 
 
-dts = pd.read_csv('./Locationregions.csv', sep= ',')
-lab = pd.read_csv('./laborregions.csv', sep= ',')
+dts = pd.read_csv('./Locationregions.csv', sep= ',',encoding='cp1252')
 
 
 dts = dts[dts['PLUSPCUSTOMER'] != 'C1000238']

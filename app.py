@@ -12,7 +12,7 @@ server = app.server
 
 
 dts = pd.read_csv('./Locationregions.csv', sep= ',',encoding='cp1252')
-
+lab = pd.read_csv('./laborregions.csv', sep= ',',encoding='cp1252')
 
 dts = dts[dts['PLUSPCUSTOMER'] != 'C1000238']
 dts.dtypes

@@ -10,8 +10,33 @@ app = dash.Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=devi
 # Associating server
 server = app.server
 
+dsn_tns = cx_Oracle.makedsn(r'maxorclprd30.maintain.integral.co.uk', '1521', service_name='PRD30MAX') 
+conn = cx_Oracle.connect(user=r'constantine_michalis', password=r'68Pe_kdV7yzC5eX', dsn=dsn_tns) 
 
-dts = pd.read_csv('./Locationregions.csv', sep= ',',encoding='cp1252')
+
+cur = conn.cursor()
+
+cur.execute("""select distinct l.location, pluspcustomer, c.name,  s.latitudey, s.longitudex, a.ancestor, a2.ancestor as branch, c.type, l.status, s.postalcode
+            from JLL_MX76_PRD30_1.locations l 
+            join JLL_MX76_PRD30_1.serviceaddress s on l.saddresscode = s.addresscode
+            join JLL_MX76_PRD30_1.locancestor a on a.location = l.location
+            join JLL_MX76_PRD30_1.locancestor a2 on a2.location = l.location
+            join JLL_MX76_PRD30_1.pluspcustomer c on c.customer = l.pluspcustomer
+            where ((a.ancestor not like ('L%')) and (a.ancestor not like ('%00000%')) and (a2.ancestor not like ('L%')) and (a2.ancestor like ('%00000%')) and (a2.ancestor != '000000'))
+            and (l.pluspcustomer in (select customer from JLL_MX76_PRD30_1.pluspagreement where enddate>sysdate) and c.status = 'ACTIVE')
+            """)
+
+
+rows = cur.fetchall()
+
+dts = pd.DataFrame(rows)
+
+col_names = list([row[0] for row in cur.description])
+dts.columns = col_names
+
+conn.close()
+
+#dts = pd.read_csv('./Locationregions.csv', sep= ',',encoding='cp1252')
 lab = pd.read_csv('./laborregions.csv', sep= ',',encoding='cp1252')
 
 dts = dts[dts['PLUSPCUSTOMER'] != 'C1000238']
